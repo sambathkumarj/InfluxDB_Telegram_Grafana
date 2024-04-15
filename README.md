@@ -65,8 +65,9 @@ Start the InfluxDB service:
        sudo service influxdb start
 ```
        
-       Installing the InfluxDB package creates a service file at /lib/systemd/system/influxdb.service to start InfluxDB as a background service on startup.
-       To verify that the service is running correctly, restart your system and then enter the following command in your terminal:
+Installing the InfluxDB package creates a service file at /lib/systemd/system/influxdb.service to start InfluxDB as a background service on startup.
+To verify that the service is running correctly, restart your system and then enter the following command in your terminal:
+
 ```
 sudo service influxdb status
 ```
@@ -81,8 +82,8 @@ Edit the/etc/default/influxdb2 service configuration file to assign configuratio
        ARG2="—storage-wal-fsync-delay=15m"
 ```    
 
-   Edit the /lib/systemd/system/influxdb.service file to pass the
-   variables to the ExecStart value:
+Edit the /lib/systemd/system/influxdb.service file to pass the
+variables to the ExecStart value:
 
 ```    
        ExecStart=/usr/bin/influxd $ARG1 $ARG2
@@ -103,10 +104,10 @@ Create a bucket
     ◦ An organization with the name you provide.
     ◦ A bucket with the name you provide.
     
-    ◦ An admin authorization with the following properties:
-    ▪ The username and password that you provide.
-    ▪ An API Operator token.
-    ▪ Read-write permissions for all resources in the InfluxDB instance.
+ ◦ An admin authorization with the following properties:
+ ▪ The username and password that you provide.
+ ▪ An API Operator token.
+ ▪ Read-write permissions for all resources in the InfluxDB instance.
             
 You can use the InfluxDB UI, the influx CLI, or the HTTP API to run the setup process.
   ◦ To run an interactive setup that prompts you for the required information, use the InfluxDB user interface (UI) or the influx command line interface (CLI).   ◦ To automate the setup–for example, with a script that you write– use the influx command line interface (CLI) or the /api/v2/setup InfluxDB API endpoint.
@@ -120,11 +121,11 @@ While you can use your Operator token to interact with InfluxDB, we recommend cr
        
 # InfluxDB UIinflux CLIInfluxDB API
 
-   ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
-   ◦ Navigate to Load Data > API Tokens using the left navigation bar.
-   ◦ Click + GENERATE API TOKEN and select All Access API Token.
-   ◦ Enter a description for the API token and click SAVE.
-   ◦ Copy the generated token and store it for safe keeping.
+◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
+◦ Navigate to Load Data > API Tokens using the left navigation bar.
+◦ Click + GENERATE API TOKEN and select All Access API Token.
+◦ Enter a description for the API token and click SAVE.
+◦ Copy the generated token and store it for safe keeping.
 Create a bucket.
     
 In the initial setup process, you created a bucket. You can use that bucket or create one specifically for this getting started tutorial. All examples in this tutorial assume a bucket named get-started.
