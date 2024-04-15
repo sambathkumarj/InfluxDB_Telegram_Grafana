@@ -76,8 +76,8 @@ Edit the/etc/default/influxdb2 service configuration file to assign configuratio
        ARG2="—storage-wal-fsync-delay=15m"
 ```    
 
-       Edit the /lib/systemd/system/influxdb.service file to pass the
-       variables to the ExecStart value:
+   Edit the /lib/systemd/system/influxdb.service file to pass the
+   variables to the ExecStart value:
 
 ```    
        ExecStart=/usr/bin/influxd $ARG1 $ARG2
@@ -86,42 +86,42 @@ Edit the/etc/default/influxdb2 service configuration file to assign configuratio
 # Set up InfluxDB
       
 As you get started with this tutorial, do the following to make sure everything you need is in place.
-      Run the initial setup process
-      Create an All Access API token
-      Configure authentication credentials
-      Create a bucket
+Run the initial setup process
+Create an All Access API token
+Configure authentication credentials
+Create a bucket
       
-       Run the initial setup process.
-       After you install and start InfluxDB, run the initial setup process to create the following:
-        ◦ An organization with the name you provide.
-        ◦ A bucket with the name you provide.
-        ◦ An admin authorization with the following properties:
+   Run the initial setup process.
+    After you install and start InfluxDB, run the initial setup process to create the following:
+    ◦ An organization with the name you provide.
+    ◦ A bucket with the name you provide.
+    ◦ An admin authorization with the following properties:
             ▪ The username and password that you provide.
             ▪ An API Operator token.
             ▪ Read-write permissions for all resources in the InfluxDB instance.
-       You can use the InfluxDB UI, the influx CLI, or the HTTP API to run the setup process.
-        ◦ To run an interactive setup that prompts you for the required information, use the InfluxDB user interface (UI) or the influx command line interface (CLI).
-        ◦ To automate the setup–for example, with a script that you write– use the influx command line interface (CLI) or the /api/v2/setup InfluxDB API endpoint.
+   You can use the InfluxDB UI, the influx CLI, or the HTTP API to run the setup process.
+   ◦ To run an interactive setup that prompts you for the required information, use the InfluxDB user interface (UI) or the influx command line interface (CLI).
+   ◦ To automate the setup–for example, with a script that you write– use the influx command line interface (CLI) or the /api/v2/setup InfluxDB API endpoint.
        
-       Create an All Access API token.
-       During the InfluxDB initial set up process, you created an admin user and Operator token that have permissions to manage everything in your InfluxDB instance.
+   # Create an All Access API token.
+  During the InfluxDB initial set up process, you created an admin user and Operator token that have permissions to manage everything in your InfluxDB instance.
        While you can use your Operator token to interact with InfluxDB, we recommend creating an All Access token that is scoped to an organization, and then using this token to manage InfluxDB.
-       InfluxDB UIinflux CLIInfluxDB API
-        ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
-        ◦ Navigate to Load Data > API Tokens using the left navigation bar.
-        ◦ Click + GENERATE API TOKEN and select All Access API Token.
-        ◦ Enter a description for the API token and click SAVE.
-        ◦ Copy the generated token and store it for safe keeping.
+    InfluxDB UIinflux CLIInfluxDB API
+     ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
+     ◦ Navigate to Load Data > API Tokens using the left navigation bar.
+     ◦ Click + GENERATE API TOKEN and select All Access API Token.
+     ◦ Enter a description for the API token and click SAVE.
+     ◦ Copy the generated token and store it for safe keeping.
        
-       Create a bucket.
-       In the initial setup process, you created a bucket. You can use that bucket or create one specifically for this getting started tutorial. All examples in this tutorial assume a bucket named get-started.
+    Create a bucket.
+      In the initial setup process, you created a bucket. You can use that bucket or create one specifically for this getting started tutorial. All examples in this tutorial assume a bucket named get-started.
        Use theInfluxDB UI, influx CLI, or InfluxDB API to create a new bucket.
-       InfluxDB UIinflux CLIInfluxDB API
-        ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
-        ◦ Navigate to Load Data > Buckets using the left navigation bar.
-        ◦ Click + CREATE BUCKET.
-        ◦ Provide a bucket name (get-started) and select NEVER to create a bucket with an infinite retention period.
-        ◦ Click CREATE.
+      InfluxDB UIinflux CLIInfluxDB API
+      ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
+      ◦ Navigate to Load Data > Buckets using the left navigation bar.
+      ◦ Click + CREATE BUCKET.
+      ◦ Provide a bucket name (get-started) and select NEVER to create a bucket with an infinite retention period.
+      ◦ Click CREATE.
 
 # Line protocol elements
 
