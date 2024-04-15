@@ -1,6 +1,6 @@
 # InfluxDB_Telegram_Grafana
 
-# Metrics Collection USING TELEGRAF WITH INFLUX DB
+# Metrics Collection using Telegraf with InfluxDB as a Time-series DataBase
 
 # Telegraf 
 
@@ -26,6 +26,7 @@ Output Plugins write to a variety of datastores, services, & message queues, lik
 
 Integrations to a variety of metrics, events, and logs from popular containers and systems.
 Telegraf also has output plugins to send metrics to a variety of other datastores, services, and message queues, including InfluxDB, Graphite, OpenTSDB, Datadog, Librato, Kafka, MQTT, NSQ, and many others.
+
 Seamlessly connect with 300+ plugins to the platforms that make sense to you.
 
 
@@ -50,7 +51,8 @@ InfluxDB is an open-source time series database (TSDB) developed by the company 
 InfluxDB offers several benefits for storing and analyzing time series data. It supports efficient data aggregation and analysis with time interval constraints, making it suitable for IoT environments and other systems that collect data continuously over time
 Install InfluxDB
 
-# Install InfluxDB as a service with systemd
+# Install InfluxDB as a service with systems
+
 ```
 curl -O https://dl.influxdata.com/influxdb/releases/influxdb2_2.7.5-1_amd64.deb
 
@@ -58,6 +60,7 @@ sudo dpkg -i influxdb2_2.7.5-1_amd64.deb
 ```
    
 Start the InfluxDB service:
+
 ```
        sudo service influxdb start
 ```
@@ -68,9 +71,11 @@ Start the InfluxDB service:
 sudo service influxdb status
 ```
   
-  Pass configuration options to the service
+Pass configuration options to the service
 You can use systemd to customize InfluxDB configuration options and pass them to the InfluxDB service.
+
 Edit the/etc/default/influxdb2 service configuration file to assign configuration directives to influxd command line flags–for example, add one or more <ENV_VARIABLE_NAME>=<COMMAND_LINE_FLAG> lines like the following:
+
 ```
        ARG1="--http-bind-address :8087"
        ARG2="—storage-wal-fsync-delay=15m"
@@ -86,37 +91,49 @@ Edit the/etc/default/influxdb2 service configuration file to assign configuratio
 # Set up InfluxDB
       
 As you get started with this tutorial, do the following to make sure everything you need is in place.
+
 Run the initial setup process
 Create an All Access API token
 Configure authentication credentials
 Create a bucket
+
       
-   Run the initial setup process.
-    After you install and start InfluxDB, run the initial setup process to create the following:
+# Run the initial setup process.
+ After you install and start InfluxDB, run the initial setup process to create the following:
     ◦ An organization with the name you provide.
     ◦ A bucket with the name you provide.
+    
     ◦ An admin authorization with the following properties:
             ▪ The username and password that you provide.
             ▪ An API Operator token.
             ▪ Read-write permissions for all resources in the InfluxDB instance.
-   You can use the InfluxDB UI, the influx CLI, or the HTTP API to run the setup process.
-   ◦ To run an interactive setup that prompts you for the required information, use the InfluxDB user interface (UI) or the influx command line interface (CLI).
-   ◦ To automate the setup–for example, with a script that you write– use the influx command line interface (CLI) or the /api/v2/setup InfluxDB API endpoint.
+            
+You can use the InfluxDB UI, the influx CLI, or the HTTP API to run the setup process.
+  ◦ To run an interactive setup that prompts you for the required information, use the InfluxDB user interface (UI) or the influx command line interface (CLI).   ◦ To automate the setup–for example, with a script that you write– use the influx command line interface (CLI) or the /api/v2/setup InfluxDB API endpoint.
+
        
    # Create an All Access API token.
+   
   During the InfluxDB initial set up process, you created an admin user and Operator token that have permissions to manage everything in your InfluxDB instance.
+  
        While you can use your Operator token to interact with InfluxDB, we recommend creating an All Access token that is scoped to an organization, and then using this token to manage InfluxDB.
-    InfluxDB UIinflux CLIInfluxDB API
-     ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
-     ◦ Navigate to Load Data > API Tokens using the left navigation bar.
-     ◦ Click + GENERATE API TOKEN and select All Access API Token.
-     ◦ Enter a description for the API token and click SAVE.
-     ◦ Copy the generated token and store it for safe keeping.
        
-    Create a bucket.
+# InfluxDB UIinflux CLIInfluxDB API
+
+   ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
+   ◦ Navigate to Load Data > API Tokens using the left navigation bar.
+   ◦ Click + GENERATE API TOKEN and select All Access API Token.
+   ◦ Enter a description for the API token and click SAVE.
+   ◦ Copy the generated token and store it for safe keeping.
+Create a bucket.
+    
       In the initial setup process, you created a bucket. You can use that bucket or create one specifically for this getting started tutorial. All examples in this tutorial assume a bucket named get-started.
-       Use theInfluxDB UI, influx CLI, or InfluxDB API to create a new bucket.
-      InfluxDB UIinflux CLIInfluxDB API
+       
+     
+      Use theInfluxDB UI, influx CLI, or InfluxDB API to create a new bucket.
+   
+   # InfluxDB UIinflux CLIInfluxDB API
+   
       ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
       ◦ Navigate to Load Data > Buckets using the left navigation bar.
       ◦ Click + CREATE BUCKET.
@@ -126,11 +143,13 @@ Create a bucket
 # Line protocol elements
 
 Each line of line protocol contains the following elements:
+
 * Required
     • *measurement: String that identifies the measurement to store the data in.
     • tag set: Comma-delimited list of key value pairs, each representing a tag. Tag keys and values are unquoted strings.Spaces, commas, and equal characters must be escaped.
     • *field set: Comma-delimited list key value pairs, each representing a field. Field keys are unquoted strings.Spaces and commas must be escaped.Field values can be strings (quoted), floats, integers, unsigned integers, or booleans.
     • Timestamp: Unix timestamp associated with the data. InfluxDB supports up to nanosecond precision. If the precision of the timestamp is not in nanoseconds, you must specify the precision when writing the data to InfluxDB.
+  
     •  Example – Input and Output Plugins:
       [[inputs.exec]]
       commands = ["python3 /etc/telegraf/custom_script/log_capture/amf-array-1.py"]
@@ -147,10 +166,12 @@ Each line of line protocol contains the following elements:
 
 To run the Python script as a input, In telegraf we can use EXEC as input plugins,
 Python script should have permission like, 
+
 ```
 chmod 777 <filename.py>
 chmod +x <filename.py>
 ```
+
 and location should be etc/telegraf/customscripts/<filename.py>
 
 # Set environment variables
@@ -206,7 +227,8 @@ To configure basic settings for the data source, complete the following steps:
     4. Select InfluxDB.
        The Settings tab of the data source is displayed.
     5. Set the data source’s basic configuration options carefully:
-        
+
+```        
 Influxdb : http://<192.168.1.1>:8086
 Query Language : Flux
  
@@ -217,10 +239,11 @@ Passwd : Netcon
 Organisation : <Netcon>
 Bucket name : <Telegraf>
 Token : “ ” -> <From Influx DB UI>
+```
 
 Finally, Click save and test to store the Data source of InfluxDB in the Grafana.
 
-InfluxDB – Grafana_log Management
+# InfluxDB – Grafana_log Management
 
 Create a new Dashboard and use InfluxDB as Data source, Flux language is required to view the data in the database  , we can get query from the Influx DB UI By clicking the Scrpit Editor to get  query and copy & paste in the Grafana dashboard. You can see view the logs from the InfluxDB and Finally click save and Apply option to create the Dashboard panel.
 
