@@ -33,6 +33,7 @@ Seamlessly connect with 300+ plugins to the platforms that make sense to you.
 # Installation steps for Telegraf 
 
 Commands to install telegraf in host machine
+
 ```
 wget -q https://repos.influxdata.com/influxdata-archive_compat.key
 
@@ -135,11 +136,11 @@ Use theInfluxDB UI, influx CLI, or InfluxDB API to create a new bucket.
    
    # InfluxDB UIinflux CLIInfluxDB API
    
-      ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
-      ◦ Navigate to Load Data > Buckets using the left navigation bar.
-      ◦ Click + CREATE BUCKET.
-      ◦ Provide a bucket name (get-started) and select NEVER to create a bucket with an infinite retention period.
-      ◦ Click CREATE.
+   ◦ Visit localhost:8086 in a browser to log in and access the InfluxDB UI.
+   ◦ Navigate to Load Data > Buckets using the left navigation bar.
+   ◦ Click + CREATE BUCKET.
+   ◦ Provide a bucket name (get-started) and select NEVER to create a bucket with an infinite retention period.
+   ◦ Click CREATE.
 
 # Line protocol elements
 
