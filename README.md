@@ -104,9 +104,9 @@ Create a bucket
     ◦ A bucket with the name you provide.
     
     ◦ An admin authorization with the following properties:
-            ▪ The username and password that you provide.
-            ▪ An API Operator token.
-            ▪ Read-write permissions for all resources in the InfluxDB instance.
+    ▪ The username and password that you provide.
+    ▪ An API Operator token.
+    ▪ Read-write permissions for all resources in the InfluxDB instance.
             
 You can use the InfluxDB UI, the influx CLI, or the HTTP API to run the setup process.
   ◦ To run an interactive setup that prompts you for the required information, use the InfluxDB user interface (UI) or the influx command line interface (CLI).   ◦ To automate the setup–for example, with a script that you write– use the influx command line interface (CLI) or the /api/v2/setup InfluxDB API endpoint.
@@ -114,9 +114,9 @@ You can use the InfluxDB UI, the influx CLI, or the HTTP API to run the setup pr
        
    # Create an All Access API token.
    
-  During the InfluxDB initial set up process, you created an admin user and Operator token that have permissions to manage everything in your InfluxDB instance.
+   During the InfluxDB initial set up process, you created an admin user and Operator token that have permissions to manage everything in your InfluxDB instance.
   
-       While you can use your Operator token to interact with InfluxDB, we recommend creating an All Access token that is scoped to an organization, and then using this token to manage InfluxDB.
+While you can use your Operator token to interact with InfluxDB, we recommend creating an All Access token that is scoped to an organization, and then using this token to manage InfluxDB.
        
 # InfluxDB UIinflux CLIInfluxDB API
 
@@ -127,10 +127,10 @@ You can use the InfluxDB UI, the influx CLI, or the HTTP API to run the setup pr
    ◦ Copy the generated token and store it for safe keeping.
 Create a bucket.
     
-      In the initial setup process, you created a bucket. You can use that bucket or create one specifically for this getting started tutorial. All examples in this tutorial assume a bucket named get-started.
-       
-     
-      Use theInfluxDB UI, influx CLI, or InfluxDB API to create a new bucket.
+In the initial setup process, you created a bucket. You can use that bucket or create one specifically for this getting started tutorial. All examples in this tutorial assume a bucket named get-started.
+            
+Use theInfluxDB UI, influx CLI, or InfluxDB API to create a new bucket.
+
    
    # InfluxDB UIinflux CLIInfluxDB API
    
