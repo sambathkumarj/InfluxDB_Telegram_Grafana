@@ -1,4 +1,4 @@
-# InfluxDB_Telegram_Grafana
+# InfluxDB_Telegraf_Grafana
 
 # Metrics Collection using Telegraf with InfluxDB as a Time-series DataBase
 
